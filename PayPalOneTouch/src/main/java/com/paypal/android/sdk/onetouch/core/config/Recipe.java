@@ -113,7 +113,8 @@ public abstract class Recipe<T extends Recipe<T>> {
 
     public static Intent getBrowserIntent(Context context, String browserSwitchUrl, String allowedBrowserPackage) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(browserSwitchUrl))
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                .addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT
+                        | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
 
         if (!"*".equals(allowedBrowserPackage)) {
             intent.setPackage(allowedBrowserPackage);
